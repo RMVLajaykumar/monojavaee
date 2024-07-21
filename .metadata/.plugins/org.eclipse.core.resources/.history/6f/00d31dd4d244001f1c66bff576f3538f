@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="Student">
+ <input type="hidden" name="command" value="search"/>
+  <div class="mb-3">
+    <label for="name" class="form-label">name</label>
+    <input type="text" class="form-control" id="name" name="name" >
+  </div>
+
+
+</body>
+</html>

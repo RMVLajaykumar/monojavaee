@@ -1,0 +1,19 @@
+
+Jul 17, 2024 19:13:06.67 NEW SESSION
+Jul 17, 2024 19:13:06.67 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+Jul 21, 2024 11:16:56.52 NEW SESSION
+Jul 21, 2024 11:16:56.52 Created TensorFlow Lite XNNPACK delegate for CPU.
+Jul 21, 2024 11:47:09.72 [35312:35768:0721/114709.719:ERROR:cert_verify_proc_builtin.cc(1051)] CertVerifyProcBuiltin for english.msb-advisors.com failed:
+Jul 21, 2024 11:47:09.72 ----- Certificate i=0 (CN=english.msb-advisors.com) -----
+Jul 21, 2024 11:47:09.72 ERROR: No matching issuer found
+Jul 21, 2024 11:47:09.72 
+Jul 21, 2024 11:47:09.72 
+Jul 21, 2024 11:48:03.78 [35312:35768:0721/114803.785:ERROR:cert_verify_proc_builtin.cc(1051)] CertVerifyProcBuiltin for www.barnhartlawplc.com failed:
+Jul 21, 2024 11:48:04.08 ----- Certificate i=0 (CN=450-barnhartlawplc.gdmig-helpingyoucare.info) -----
+Jul 21, 2024 11:48:04.09 ERROR: No matching issuer found
+Jul 21, 2024 11:48:04.09 
+Jul 21, 2024 11:48:04.09 
+Jul 21, 2024 11:53:31.11 Created TensorFlow Lite XNNPACK delegate for CPU.
+Jul 21, 2024 12:12:32.40 [43396:1880:0721/121232.400:ERROR:CONSOLE(5)] "Uncaught TypeError: Cannot read properties of undefined (reading 'addListener')", source: chrome-extension://nkeimhogjdpnpccoofpliimaahmaaome/thunk.js (5)
+Jul 21, 2024 19:07:16.22 Created TensorFlow Lite XNNPACK delegate for CPU.

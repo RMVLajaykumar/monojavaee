@@ -1,0 +1,67 @@
+package com.monocept.controller;
+
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.monocept.dao.CustomerDao;
+import com.monocept.entry.Customer;
+
+@WebServlet("/customer")
+public class CustomerServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    public CustomerDao customerDAO = new CustomerDao();
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+
+        if ("add".equals(action)) {
+            addCustomer(request, response);
+        } else {
+            response.sendRedirect("error.jsp");
+        }
+    }
+
+    private void addCustomer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String firstName = request.getParameter("customer-fname");
+        String lastName = request.getParameter("customer-lname");
+        String email = request.getParameter("customer-email");
+        String password = request.getParameter("customer-password");
+
+        Customer newCustomer = new Customer(0, firstName, lastName, email, password);
+        boolean success = customerDAO.addCustomer(newCustomer);
+
+        if (success) {
+            response.sendRedirect("admin"); // Redirect to admin home or customer list page
+        } else {
+            response.sendRedirect("add-new-customer.jsp?error=true");
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+
+        if ("list".equals(action)) {
+            listCustomer(request, response);
+        } else {
+            response.sendRedirect("error.jsp");
+        }
+    }
+
+    private void listCustomer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Customer> customerList = customerDAO.getCustomers();
+        request.setAttribute("customerList", customerList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view-customers.jsp");
+        dispatcher.forward(request, response);
+    }
+}

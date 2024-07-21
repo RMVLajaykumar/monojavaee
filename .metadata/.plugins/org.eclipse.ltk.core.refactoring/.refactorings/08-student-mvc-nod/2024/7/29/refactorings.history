@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Student.java&apos; to &apos;12-student-mvc-db/src/com.monocept.entry&apos;&#x0D;&#x0A;- Original project: &apos;08-student-mvc-nod&apos;&#x0D;&#x0A;- Destination element: &apos;12-student-mvc-db/src/com.monocept.entry&apos;&#x0D;&#x0A;- Original element: &apos;com.monocept.model.Student.java&apos;" description="Copy compilation unit" destination="=12-student-mvc-db/src&lt;com.monocept.entry" element1="/src&lt;com.monocept.model{Student.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1721195379398" units="1" version="1.0"/>
+</session>
