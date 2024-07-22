@@ -17,3 +17,26 @@ Jul 21, 2024 11:48:04.09
 Jul 21, 2024 11:53:31.11 Created TensorFlow Lite XNNPACK delegate for CPU.
 Jul 21, 2024 12:12:32.40 [43396:1880:0721/121232.400:ERROR:CONSOLE(5)] "Uncaught TypeError: Cannot read properties of undefined (reading 'addListener')", source: chrome-extension://nkeimhogjdpnpccoofpliimaahmaaome/thunk.js (5)
 Jul 21, 2024 19:07:16.22 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+Jul 22, 2024 14:55:09.12 NEW SESSION
+Jul 22, 2024 14:55:09.13 [16660:644:0722/145508.888:ERROR:ukm_database_backend.cc(146)] Failed to open UKM database: 0 database is locked
+Jul 22, 2024 14:55:13.10 Created TensorFlow Lite XNNPACK delegate for CPU.
+Jul 22, 2024 14:55:14.26 [16660:10272:0722/145514.264:ERROR:feature_processor_state.cc(42)] Processing error occured: model SearchUser failed with SqlQueryRunError, message: 
+Jul 22, 2024 14:56:16.90 Created TensorFlow Lite XNNPACK delegate for CPU.
+Jul 22, 2024 15:16:05.96 [12292:1844:0722/151605.967:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+Jul 22, 2024 15:16:06.10 [12292:1844:0722/151605.979:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+Jul 22, 2024 15:16:20.40 [12292:1844:0722/151620.402:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -105
+Jul 22, 2024 17:27:25.68 Created TensorFlow Lite XNNPACK delegate for CPU.
+Jul 22, 2024 18:33:39.41 [22300:20500:0722/183339.409:ERROR:interface_endpoint_client.cc(722)] Message 1 rejected by interface blink.mojom.WidgetHost
+Jul 22, 2024 20:21:57.88 [22300:20500:0722/202157.852:ERROR:account_info_fetcher.cc(62)] OnGetTokenFailure: Invalid credentials (credentials rejected by server).
+Jul 22, 2024 20:22:15.66 [22300:20500:0722/202215.665:ERROR:interface_endpoint_client.cc(722)] Message 0 rejected by interface blink.mojom.WidgetHost
+Jul 22, 2024 20:53:51.91 [22300:20500:0722/205351.773:ERROR:CONSOLE(5)] "Uncaught TypeError: Cannot read properties of undefined (reading 'addListener')", source: chrome-extension://nkeimhogjdpnpccoofpliimaahmaaome/thunk.js (5)
+Jul 22, 2024 20:55:00.38 [22300:12708:0722/205500.380:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 20:55:01.78 [22300:12708:0722/205501.787:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 20:55:06.80 [22300:20500:0722/205506.806:ERROR:fallback_task_provider.cc(127)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+Jul 22, 2024 21:11:52.00 [22300:22124:0722/211152.004:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 21:11:53.42 [22300:22124:0722/211153.427:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 21:39:46.50 [22300:23976:0722/213946.506:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 21:39:47.93 [22300:23976:0722/213947.934:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 21:39:49.30 [22300:23976:0722/213949.301:ERROR:wgc_capturer_win.cc(255)] Source is not capturable.
+Jul 22, 2024 21:48:02.56 [22300:12240:0722/214802.565:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2

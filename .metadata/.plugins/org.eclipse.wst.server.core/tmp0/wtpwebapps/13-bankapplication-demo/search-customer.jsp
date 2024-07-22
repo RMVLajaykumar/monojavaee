@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form action="customer">
+        <form action="admin">
             <input type="hidden" name="command" value="search"/>
             <div class="mb-3">
                 <label for="customer_id" class="form-label">Enter the customerID to Search</label>

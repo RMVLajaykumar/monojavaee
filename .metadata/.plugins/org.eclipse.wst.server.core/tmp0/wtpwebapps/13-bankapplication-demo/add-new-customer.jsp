@@ -8,14 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <style>
         body {
-            background-image: url("https://tse2.mm.bing.net/th?id=OIP.vdcDMKwke20rx-F7_CWcIQHaEK&pid=Api&P=0&h=180");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #f8f9fa; /* Changed background color for the body */
             font-family: sans-serif;
         }
         .navbar {
-            background-color: #f5f5f5;
+            background-color: #007bff; /* Blue background for the heading */
+            position: relative;
+            color: white; /* White text color */
+        }
+        .navbar .display-5 {
+            color: white; /* Ensure text color is white */
         }
         .card {
             border-radius: 10px;
@@ -24,20 +26,27 @@
         .form-group label {
             font-weight: bold;
         }
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white; /* Ensure text color is white */
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar bg-white">
+    <nav class="navbar bg-primary">
         <div class="container-fluid d-flex justify-content-center align-items-center">
             <h1 class="display-5">Add New Customer</h1>
+            <a href="logout" class="btn btn-danger logout-button">Logout</a>
         </div>
     </nav>
     <hr />
     <div class="container">
         <div class="card w-50 mx-auto my-5">
             <div class="card-body">
-                <form action="customer" method="post">
-                    <input type="hidden" name="action" value="add" />
+                <form action="admin" method="post">
+                    <input type="hidden" name="command" value="add" />
                     <div class="form-group mb-3">
                         <label>First Name</label>
                         <input type="text" class="form-control" name="customer-fname" placeholder="Enter first name" required />
@@ -54,8 +63,8 @@
                         <label>Password</label>
                         <input type="password" class="form-control" name="customer-password" placeholder="Enter password" required />
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Customer</button>
-                    <a href="admin.jsp" class="btn btn-danger ms-2">Back</a>
+                    <input type="submit" class="btn btn-primary" value="Add customer">
+                    <a href="admin" class="btn btn-danger ms-2">Back</a>
                 </form>
             </div>
         </div>

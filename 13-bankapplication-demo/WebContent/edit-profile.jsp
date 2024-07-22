@@ -63,6 +63,11 @@
     display: flex;
     gap: 10px; /* Space between buttons */
   }
+  .logout-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
 </style>
 </head>
 <body>
@@ -74,10 +79,11 @@
       </div>
     </div>
   </div>
+  <a href="logout" class="btn btn-danger logout-button">Logout</a>
   <div class="row justify-content-center mt-4">
     <div class="col-lg-8 col-md-10 col-sm-12">
       <div class="form-container">
-        <form action="user" method="get">
+        <form action="user" method="post">
           <input type="hidden" name="command" value="editProfile">
           <div class="form-group mb-4"> 
             <label for="firstName">First Name</label>
@@ -94,7 +100,7 @@
           <div class="form-group mt-4 button-group">
             <button type="submit" class="btn btn-primary">Update</button>
             <button type="reset" class="btn btn-secondary">Cancel</button>
-            <a href="user.jsp" class="btn btn-danger">Back</a>
+            <a href="user" class="btn btn-danger">Back</a>
           </div>
         </form>
       </div>

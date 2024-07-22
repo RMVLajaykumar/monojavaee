@@ -1,4 +1,4 @@
-package com.monocept.dao;
+package com.monocept.database;
 
 	import java.sql.Connection;
 	import java.sql.DriverManager;

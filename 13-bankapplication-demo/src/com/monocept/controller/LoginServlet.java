@@ -1,6 +1,7 @@
 package com.monocept.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.monocept.dao.CustomerDao;
-import com.monocept.entry.Customer;
+import com.monocept.database.CustomerDao;
+import com.monocept.entity.Customer;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -25,25 +26,28 @@ public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+    	
+    	String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
-        if ("admin".equals(username) && "admin123".equals(password)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("role", "Admin");
-            response.sendRedirect("admin");
-        } else {
-            Customer customer = CustomerDao.validateCustomer(username, password);
-            if (customer != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username);
-                session.setAttribute("role", "User");
-                session.setAttribute("customer", customer);
-                response.sendRedirect("user"); 
-            } else {
-                response.sendRedirect("login.jsp?error=true");
-            }
-        }
+		if (password != null && username != null) {
+			try {
+				if (CustomerDao.validateAdmin(username,password)) {
+					HttpSession session = request.getSession();
+					session.setAttribute("username", username);
+					session.setAttribute("role", "Admin");
+					response.sendRedirect("admin");
+				} else if (CustomerDao.validateCustomer(username, password)) {
+					HttpSession session = request.getSession();
+					session.setAttribute("username", username);
+					session.setAttribute("role", "User");
+					response.sendRedirect("user");
+				} else {
+					response.sendRedirect("login.jsp?error=true");
+				}
+			} catch (IOException e) {
+				System.out.println(e);
+			}
+		}
     }
 }

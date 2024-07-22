@@ -1,4 +1,4 @@
-package com.monocept.dao;
+package com.monocept.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +12,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import com.monocept.entry.Transaction;
-import com.monocept.entry.Account;
-import com.monocept.entry.Customer;
+import com.monocept.entity.Account;
+import com.monocept.entity.Customer;
+import com.monocept.entity.Transaction;
 
 
 
@@ -23,18 +23,17 @@ public class CustomerDao {
 
 DataSource datasource;
 
-    private static final String VALIDATE_CUSTOMER_QUERY = "SELECT * FROM customer WHERE email_id = ? AND password = ?";
-    //private static final String query = "SELECT c.customer_id, c.first_name, c.last_name, a.account_number, a.balance FROM customer c JOIN accounts a ON c.customer_id = a.customer_id";
-    private static final String INSERT_CUSTOMER_QUERY = "INSERT INTO customer (first_name, last_name, email_id, password) VALUES (?, ?, ?, ?)";
+    
     public CustomerDao(DataSource datasource2) {
-		// TODO Auto-generated constructor stub
+		
     	this.datasource=datasource2;
 	}
 
-	public static Customer validateCustomer(String email, String password) {
+	public static boolean validateCustomer(String email, String password) {
         try (Connection connection = DataBaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(VALIDATE_CUSTOMER_QUERY)) {
-
+        		) {
+        	String VALIDATE_CUSTOMER_QUERY = "SELECT * FROM customer WHERE email_id = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(VALIDATE_CUSTOMER_QUERY);
             statement.setString(1, email);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
@@ -43,13 +42,13 @@ DataSource datasource;
                 int customerId = resultSet.getInt("customer_id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
-                return new Customer(customerId, firstName, lastName, email, password);
+                return true;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
     
     public Map<Customer,Account> getAllCustomersWithAccounts() {
@@ -85,7 +84,9 @@ DataSource datasource;
 
     public boolean addCustomer(Customer customer) {
         try (Connection connection = DataBaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(INSERT_CUSTOMER_QUERY)) {
+        		 ) {
+        	String INSERT_CUSTOMER_QUERY = "INSERT INTO customer (first_name, last_name, email_id, password) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(INSERT_CUSTOMER_QUERY);
 
             statement.setString(1, customer.getFirst_name());
             statement.setString(2, customer.getLast_name());
@@ -167,31 +168,60 @@ DataSource datasource;
         return customers;
     }
 
-	public List<Transaction> SearchTransaction(int senderId, int receiverId) {
-		
-		List<Transaction> transactions=new ArrayList<Transaction>();
-		try {
-		Connection connection = DataBaseUtil.getConnection();
-		String selectQuery="select * from transactions where sender_account_number=? and receiver_account_number=?";
-		PreparedStatement state = connection.prepareStatement(selectQuery);
-		state.setInt(1,senderId);
-		state.setInt(2,receiverId);
-		ResultSet executeQuery = state.executeQuery();
-		while(executeQuery.next()) {
-			int sender=executeQuery.getInt("sender_account_number");
-			int receiver=executeQuery.getInt("receiver_account_number");
-			String date=executeQuery.getString("date_of_transaction");
-			String type=executeQuery.getString("transaction_type");
-			double amount=executeQuery.getDouble("transaction_amount");
-			Transaction transaction=new Transaction(sender, receiver, date, type, amount);
-			transactions.add(transaction);
-		}
-		}
-		  catch (SQLException e) {
-		      e.printStackTrace();
-		  }
-		return transactions;
-	}
+    public List<Transaction> searchTransactions(Integer senderAccountNumber, Integer receiverAccountNumber, String fromDate, String toDate) {
+        List<Transaction> transactions = new ArrayList<>();
+        StringBuilder query = new StringBuilder("SELECT * FROM transactions WHERE 1=1");
+        
+        if (senderAccountNumber != null) {
+            query.append(" AND sender_account_number = ?");
+        }
+        if (receiverAccountNumber != null) {
+            query.append(" AND receiver_account_number = ?");
+        }
+        if (fromDate != null && !fromDate.isEmpty()) {
+            query.append(" AND date_of_transaction >= ?");
+        }
+        if (toDate != null && !toDate.isEmpty()) {
+            query.append(" AND date_of_transaction <= ?");
+        }
+
+        try (Connection connection = DataBaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query.toString())) {
+
+            int paramIndex = 1;
+            if (senderAccountNumber != null) {
+                statement.setInt(paramIndex++, senderAccountNumber);
+            }
+            if (receiverAccountNumber != null) {
+                statement.setInt(paramIndex++, receiverAccountNumber);
+            }
+            if (fromDate != null && !fromDate.isEmpty()) {
+                statement.setDate(paramIndex++, java.sql.Date.valueOf(fromDate));
+            }
+            if (toDate != null && !toDate.isEmpty()) {
+                statement.setDate(paramIndex++, java.sql.Date.valueOf(toDate));
+            }
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int sender = resultSet.getInt("sender_account_number");
+                    int receiver = resultSet.getInt("receiver_account_number");
+                    String date = resultSet.getString("date_of_transaction");
+                    String type = resultSet.getString("transaction_type");
+                    double amount = resultSet.getDouble("transaction_amount");
+                    Transaction transaction = new Transaction(sender, receiver, date, type, amount);
+                    transactions.add(transaction);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+
+
+    
 
 	public List<Transaction> getPassbook(String email) throws SQLException {
 	    List<Transaction> transactions = new ArrayList<>();
@@ -358,6 +388,27 @@ DataSource datasource;
 		    return false;
 
 	}
+
+		public static boolean validateAdmin(String username, String password) {
+		    try (Connection connection = DataBaseUtil.getConnection();
+	        		) {
+	        	String VALIDATE_CUSTOMER_QUERY = "SELECT * FROM admin WHERE email_id = ? AND passsword = ?";
+	            PreparedStatement statement = connection.prepareStatement(VALIDATE_CUSTOMER_QUERY);
+	            statement.setString(1, username);
+	            statement.setString(2, password);
+	            ResultSet resultSet = statement.executeQuery();
+
+	            if (resultSet.next()) {
+	               return true;
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	     
+	    
+			return false;
+		}
 
 
 	}

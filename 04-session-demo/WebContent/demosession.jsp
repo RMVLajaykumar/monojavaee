@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.monocept.entry.StringUtil"%>
+<%@ page import="com.monocept.entity.StringUtil"%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,4 +1,4 @@
-package com.monocept.entry;
+package com.monocept.entity;
 
 public class Account {
     private int customer_id;

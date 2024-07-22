@@ -13,10 +13,7 @@
 <title>New Transaction</title>
 <style>
   body {
-    background-image: url('https://tse4.mm.bing.net/th?id=OIP.UYnb2V3jn7iNqipQayew-QHaE7&pid=Api&P=0&h=180');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-attachment: fixed; 
+    background-color:
   }
   .container {
     padding: 2rem; 
@@ -40,35 +37,47 @@
   .form-group {
     margin-bottom: 1.5rem; 
   }
+  .logout-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+  .heading {
+    background-color: #007bff; 
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
 </style>
 </head>
 <body>
   <div class="container mt-3">
     <div class="row justify-content-center">
       <div class="col-12">
-        <div class="p-4 border bg-primary text-center text-white">
+        <div class="p-4 heading text-center">
           <h1>New Transaction</h1>
         </div>
       </div>
     </div>
+    <a href="logout" class="btn btn-danger logout-button">Logout</a>
     <hr />
     <div class="row justify-content-center mt-3">
       <div class="col-lg-4">
         <div class="p-4 border bg-light text-center">
           <h2 class="mb-4">TRANSFER</h2>
-          <form action="user" method="get">
-            <input type="hidden" name="command" value="newtransaction">
+          <form action="user" method="post">
+            <input type="hidden" name="command" value="newtransaction"> 
             <div class="form-group mb-4">
-              <label for="account_number">Account Number</label>
-              <input type="text" class="form-control" id="account_number" name="receiver_account_number" placeholder="Enter receiver account number">
+                <label for="account_number">Account Number</label>
+                <input type="text" class="form-control" id="account_number" name="receiver_account_number" placeholder="Enter receiver account number">
             </div>
             <div class="form-group mb-4">
-              <label for="transaction_amount">Amount</label>
-              <input type="text" class="form-control" id="transaction_amount" placeholder="Enter amount" name="transaction_amount">
+                <label for="transaction_amount">Amount</label>
+                <input type="text" class="form-control" id="transaction_amount" placeholder="Enter amount" name="transaction_amount">
             </div>
             <div class="form-group mt-4">
-              <button type="submit" class="btn btn-primary mr-2">Transfer</button>
-                  <a href="user.jsp" class="btn btn-danger back-button">Cancel</a>
+                <button type="submit" class="btn btn-primary mr-2">Transfer</button>
+                <a href="user" class="btn btn-danger">Cancel</a>
             </div>
           </form>
         </div>

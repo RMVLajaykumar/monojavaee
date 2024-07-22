@@ -20,24 +20,24 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid d-flex justify-content-between">
             <div class="navbar-brand-center">
-                <h1 class="navbar-brand text-white mb-0">Bank Application</h1>
+                <h1 class="navbar-brand  mb-0">Bank Application</h1>
             </div>
             <div class="d-flex">
-                <a href="login.jsp" class="btn btn-danger">Logout</a>
+                <a href="logout" class="btn btn-danger">Logout</a>
             </div>
         </div>
     </nav>
     <hr />
     <nav class="navbar bg-primary">
         <div class="container-fluid d-flex justify-content-center align-items-center">
-            <h1 class="navbar-brand my-2 text-white">Welcome to Customer Home</h1>
+            <h1 class="navbar-brand my-2 ">Welcome to Customer Home</h1>
         </div>
     </nav>
     <nav class="navbar navbar-expand-lg bg-white px-5">
         <div class="container-fluid">
             <a class="navbar-brand nav-link" href="user?command=passbook">Passbook</a>
-            <a class="navbar-brand nav-link" href="transaction.jsp">New Transactions</a>
-            <a class="navbar-brand nav-link" href="edit-profile.jsp">Edit Profile</a>
+            <a class="navbar-brand nav-link" href="user?command=newtransaction">New Transactions</a>
+            <a class="navbar-brand nav-link" href="user?command=editProfile">Edit Profile</a>
         </div>
     </nav>
     <hr>

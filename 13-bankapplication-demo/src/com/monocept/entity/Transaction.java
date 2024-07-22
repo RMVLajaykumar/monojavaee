@@ -1,4 +1,4 @@
-package com.monocept.entry;
+package com.monocept.entity;
 public class Transaction {
 	private int transaction_number;
 	private int sender_account_number;

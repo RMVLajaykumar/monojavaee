@@ -13,24 +13,35 @@
             margin: 0;
         }
         body {
-            background-image: url('https://c93fea60bb98e121740fc38ff31162a8.s3.amazonaws.com/wp-content/uploads/2017/05/moneytransfer.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #f8f9fa; 
             font-family: sans-serif;
+        }
+        .navbar {
+            background-color: #007bff; 
+            position: relative;
+            color: white;
+        }
+        .navbar .display-5 {
+            color: white; 
         }
         .container {
             margin-top: 20px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             padding: 20px;
+            position: relative;
         }
         table {
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .back-button {
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .logout-button {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -38,8 +49,17 @@
     </style>
 </head>
 <body>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <h1 class="display-5">Transaction List</h1>
+            <a href="logout" class="btn btn-danger logout-button">Logout</a>
+        </div>
+    </nav>
     <div class="container">
-        <h2 class="text-center">Transaction List</h2>
+        <div class="button-group">
+            <a href="search-transaction.jsp" class="btn btn-success">Search</a>
+            <a href="admin" class="btn btn-danger">Back</a>
+        </div>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -62,8 +82,6 @@
                 </c:forEach>
             </tbody>
         </table>
-        <a href="search-transaction.jsp" class="btn btn-success">Search</a>
     </div>
-    <a href="admin.jsp" class="btn btn-danger back-button">Back</a>
 </body>
 </html>

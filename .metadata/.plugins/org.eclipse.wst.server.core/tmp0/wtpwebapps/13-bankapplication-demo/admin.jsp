@@ -23,7 +23,7 @@
 		<div class="container-fluid">
 			<div class="d-flex justify-content-between align-items-center w-100">
 				<h1 class="navbar-brand my-2 mx-auto">Bank Application</h1>
-				<a href="login.jsp" class="btn btn-danger">Logout</a>
+				<a href="logout" class="btn btn-danger">Logout</a>
 			</div>
 		</div>
 	</nav>
@@ -38,9 +38,9 @@
 
 	<nav class="navbar navbar-expand-lg bg-white px-5">
 		<div class="container-fluid">
-			<a class="navbar-brand nav-link" href="add-new-customer.jsp">Add New Customer</a> 
-			<a class="navbar-brand nav-link" href="customer">View Customers</a> 
-			<a class="navbar-brand nav-link" href="viewTransactionServlet">View Transactions</a>
+			<a class="navbar-brand nav-link" href="admin?command=addCustomer">Add New Customer</a> 
+			<a class="navbar-brand nav-link" href="admin?command=viewCustomer">View Customers</a> 
+			<a class="navbar-brand nav-link" href="admin?command=transaction">View Transactions</a>
 		</div>
 	</nav>
 

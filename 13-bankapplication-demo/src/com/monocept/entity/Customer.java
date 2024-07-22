@@ -1,4 +1,4 @@
-package com.monocept.entry;
+package com.monocept.entity;
 
 import java.util.ArrayList;
 import java.util.List;
