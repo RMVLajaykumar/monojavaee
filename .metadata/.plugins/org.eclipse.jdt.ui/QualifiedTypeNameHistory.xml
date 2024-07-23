@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="com.monocept.dao.StudentDbUtil"/>
 <fullyQualifiedTypeName name="com.monocept.entry.Student"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -25,4 +24,7 @@
 <fullyQualifiedTypeName name="javax.sql.DataSource"/>
 <fullyQualifiedTypeName name="com.monocept.dao.CustomerDao"/>
 <fullyQualifiedTypeName name="com.monocept.entry.Customer"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
